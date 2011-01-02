@@ -1,5 +1,9 @@
 Todo::Application.routes.draw do
-  resources :items
+  get "users/new"
+
+  resources :items, :users
+
+  match '/signup', :to => 'users#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -28,6 +28,20 @@ describe UsersController do
         response.should render_template('new')
       end
 
+      it "should clear the password field" do
+        @attr[:password] = "test"
+        post :create, :user => @attr
+        
+        assigns(:user).password.should == ""
+      end
+
+      it "should clear the confirmation password field" do
+        @attr[:password_confirmation] = "test"
+        post :create, :user => @attr
+        
+        assigns(:user).password_confirmation.should == ""
+      end
+      
     end
 
     describe "success" do

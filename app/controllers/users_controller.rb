@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Todoit"
       redirect_to @user
     else
+      @user.password = @user.password_confirmation = ""
       @title = "Sign up"
       render 'new'
     end

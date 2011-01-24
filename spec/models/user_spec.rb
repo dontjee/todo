@@ -29,4 +29,15 @@ describe User do
       @user.should be_admin
     end
   end
+
+  describe "item associations" do
+
+    before(:each) do
+      @user = User.create(@attr)
+    end
+
+    it "should have an items attribute" do
+      @user.should respond_to(:items)
+    end
+  end
 end

@@ -11,6 +11,6 @@ Factory.sequence :email do |n|
 end
 
 Factory.define :item do |item|
-  item.content "Nothing important"
+  item.text "Nothing important"
   item.association :user
 end

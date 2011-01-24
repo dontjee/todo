@@ -34,10 +34,19 @@ describe User do
 
     before(:each) do
       @user = User.create(@attr)
+      @item1 = Factory(:item, :user => @user, :created_at => 1.day.ago)
+      @item2 = Factory(:item, :user => @user, :created_at => 1.hour.ago)
     end
 
     it "should have an items attribute" do
       @user.should respond_to(:items)
+    end
+
+    it "should destroy associated items" do
+      @user.destroy
+      [@item1, @item2].each do |item|
+        Item.find_by_id(item.id).should be_nil
+      end
     end
   end
 end
